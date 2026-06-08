@@ -13,7 +13,7 @@ const navigationItems = [
   { href: "/profile", label: "Profile", icon: "👤" },
 ];
 
-const Layout = ({ children }: LayoutProps) => {
+export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
   return (
@@ -59,6 +59,4 @@ const Layout = ({ children }: LayoutProps) => {
       <main>{children}</main>
     </div>
   );
-};
-
-export default Layout;
+}
