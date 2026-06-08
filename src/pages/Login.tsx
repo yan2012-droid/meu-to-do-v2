@@ -29,7 +29,7 @@ const Login = () => {
       if (error) {
         setError(error.message);
       } else {
-        navigate("/dashboard");
+        navigate("/");
       }
     } catch (err) {
       setError("Ocorreu um erro inesperado. Tente novamente.");
