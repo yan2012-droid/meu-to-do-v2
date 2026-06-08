@@ -9,7 +9,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 const Cadastro = () => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -32,17 +31,12 @@ const Cadastro = () => {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: {
-          data: {
-            name,
-          },
-        },
       });
 
       if (error) {
         setError(error.message);
       } else {
-        navigate("/login");
+        navigate("/");
       }
     } catch (err) {
       setError("Ocorreu um erro inesperado. Tente novamente.");
@@ -62,17 +56,6 @@ const Cadastro = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleRegister} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="name">Nome</Label>
-              <Input
-                id="name"
-                type="text"
-                placeholder="Seu nome"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -119,7 +102,7 @@ const Cadastro = () => {
               onClick={() => navigate("/login")}
               className="ml-1 text-blue-500 hover:text-blue-700"
             >
-              Entrar
+              Faça login
             </button>
           </div>
         </CardContent>
