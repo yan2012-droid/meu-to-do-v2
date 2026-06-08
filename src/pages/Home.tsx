@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@/contexts/AuthContext/hooks/useAuth";
+import { useAuth } from "@/contexts/AuthContext/AuthContext";
 
 const Home = () => {
   const { user, logout } = useAuth();
