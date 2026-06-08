@@ -14,35 +14,41 @@
 
 ---
 
-## Consulta aos Guias de Detalhe
+## Consulta aos Guias de Boas Práticas
 
-Ao receber uma tarefa:
+Ao receber qualquer tarefa, a IA DEVE seguir esta ordem recomendada de leitura:
 
-1. Leia este `AI_RULES.md` primeiro.
-2. Identifique o contexto funcional em `src/contexts/<nome>/`.
-3. Se o contexto ainda não existir, crie a estrutura inicial completa do contexto, incluindo `README.md`.
-4. Leia o `README.md` do contexto relevante antes de editar código.
-5. Consulte apenas a seção necessária dos guias abaixo, usando o **Índice Operacional** no topo de cada arquivo:
-   - `docs/frontend.md` → tarefas de UI, páginas, hooks, formulários, rotas, auth e experiência do usuário
-   - `docs/backend.md` → tarefas de schema, tabelas, RLS, RPC, triggers, views e migrations
-6. Se a tarefa for full-stack, consulte os dois guias.
-7. Ao finalizar mudanças de arquitetura, atualize o `README.md` do contexto.
+### Ordem recomendada de leitura:
+1. **AI_RULES.md** (este arquivo)
+2. **src/contexts/<nome>/README.md** do contexto afetado (se existir)
+3. **docs/frontend.md** → seções relevantes de front-end
+4. **docs/backend.md** → seções relevantes de back-end
 
-Regra prática:
-- Não releia `docs/frontend.md` ou `docs/backend.md` por completo sem necessidade.
-- Leia apenas a seção relevante para a tarefa atual.
+### Guia de Práticas Front-end (`docs/frontend.md`)
+- React + TypeScript + Vite + Tailwind CSS
+- Componentes shadcn/ui (não editar `src/components/ui/`)
+- TanStack Query para dados
+- React Hook Form + Zod para formulários
+- Supabase Auth
+- Ícones: lucide-react
+- Notificações: sonner
+- Roteamento: React Router
 
----
+### Guia de Práticas Back-end (`docs/backend.md`)
+- PostgreSQL com Supabase
+- RLS (Row Level Security)
+- RPC (Remote Procedure Calls)
+- Views, triggers e migrations
+- Segurança de dados
 
-## Stack — Não substituir sem aprovação
-
-- UI: **shadcn/ui** (já instalado). Não editar `src/components/ui/`. Criar wrappers se precisar customizar.
-- Estilização: **Tailwind CSS** apenas. Sem CSS customizado. Classes condicionais via `cn()` de `src/lib/utils.ts`.
-- Ícones: **lucide-react** (já instalado).
-- Formulários: **React Hook Form + Zod**.
-- Dados da API: **TanStack Query** — nunca `useEffect` para fetch.
-- Notificações: **sonner**.
-- Roteamento: **React Router**.
+### Procedimento para qualquer tarefa:
+1. Leia este `AI_RULES.md` primeiro
+2. Identifique o contexto funcional em `src/contexts/<nome>/`
+3. Se o contexto não existir, crie a estrutura inicial completa com `README.md`
+4. Leia o `README.md` do contexto relevante
+5. Consulte o **Índice Operacional para IA** em `docs/frontend.md` ou `docs/backend.md`
+6. Leia APENAS a seção relevante necessária para a tarefa
+7. **NUNCA** altere `docs/frontend.md` ou `docs/backend.md` — apenas referencie
 
 ---
 
@@ -67,10 +73,6 @@ O projeto é dividido em contextos funcionais em `src/contexts/<nome>/`. Cada co
 - `components/`, `hooks/`, `services/`, `<nome>.types.ts`
 
 **Regra obrigatória:** ao criar um novo contexto em `src/contexts/<nome>/`, criar também o `README.md` desse contexto no mesmo commit.
-
-**Ao receber uma tarefa:** leia o `README.md` do contexto relevante antes de editar código.  
-**Ao finalizar uma tarefa com mudanças de arquitetura:** atualize o `README.md` do contexto.  
-**Se o contexto ainda não existir:** crie a estrutura inicial completa, incluindo `README.md`.
 
 ---
 
