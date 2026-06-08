@@ -7,13 +7,7 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const navigationItems = [
-  { href: "/", label: "Home", icon: "🏠" },
-  { href: "/dashboard", label: "Dashboard", icon: "📊" },
-  { href: "/profile", label: "Profile", icon: "👤" },
-];
-
-export default function Layout({ children }: LayoutProps) {
+export function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
   return (
@@ -60,3 +54,9 @@ export default function Layout({ children }: LayoutProps) {
     </div>
   );
 }
+
+const navigationItems = [
+  { href: "/", label: "Home", icon: "🏠" },
+  { href: "/dashboard", label: "Dashboard", icon: "📊" },
+  { href: "/profile", label: "Profile", icon: "👤" },
+];
