@@ -27,7 +27,7 @@ const StatusBadge = ({ status }: { status: string }) => {
   );
 };
 
-const TarefaItem = ({ tarefa }: { tarefa: any }) => {
+export const TarefaItem = ({ tarefa }: { tarefa: any }) => {
   const { updateStatus, deleteTarefa } = useTarefas();
 
   const handleStatusChange = async (
@@ -70,5 +70,3 @@ const TarefaItem = ({ tarefa }: { tarefa: any }) => {
     </div>
   );
 };
-
-export default TarefaItem;

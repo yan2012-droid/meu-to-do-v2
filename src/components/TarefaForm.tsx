@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-const TarefaForm = () => {
+export const TarefaForm = () => {
   const { createTarefa } = useTarefas();
   const {
     register,
@@ -44,5 +44,3 @@ const TarefaForm = () => {
     </form>
   );
 };
-
-export default TarefaForm;

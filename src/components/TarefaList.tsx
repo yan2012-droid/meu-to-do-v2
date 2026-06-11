@@ -1,7 +1,8 @@
 import { useTarefas } from "@/hooks/useTarefas";
 import { cn } from "@/lib/utils";
+import { TarefaItem } from "@/components/TarefaItem";
 
-const TarefaList = () => {
+export const TarefaList = () => {
   const { tarefas, isLoading, isError, error } = useTarefas();
 
   if (isLoading) return <div className="flex items-center justify-center h-16">Carregando...</div>;
@@ -21,5 +22,3 @@ const TarefaList = () => {
     </div>
   );
 };
-
-export default TarefaList;
