@@ -57,6 +57,5 @@ export function Layout({ children }: LayoutProps) {
 
 const navigationItems = [
   { href: "/", label: "Home", icon: "🏠" },
-  { href: "/dashboard", label: "Dashboard", icon: "📊" },
   { href: "/profile", label: "Profile", icon: "👤" },
 ];

@@ -7,7 +7,6 @@ import { AuthProvider } from "./contexts/AuthContext/AuthContext";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
 import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import ErrorPage from "./pages/ErrorPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
@@ -29,11 +28,6 @@ const App = () => (
             } />
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
-            <Route path="/dashboard" element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            } />
             <Route path="/profile" element={
               <ProtectedRoute>
                 <Profile />
