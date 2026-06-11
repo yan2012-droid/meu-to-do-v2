@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useTarefas } from "@/hooks/useTarefas";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
