@@ -1,16 +1,27 @@
 import { cn } from "@/lib/utils";
-import { Button, Select, Option } from "@/components/ui";
+import { Button } from "@/components/ui/button";
+import { Select } from "@/components/ui/select";
+import { Option } from "@/components/ui/select";
 import { toast } from "sonner";
+import { useTarefas } from "@/hooks/useTarefas";
 
 const StatusBadge = ({ status }: { status: string }) => {
   const config = {
     pendente: { label: "Pendente", classes: "bg-gray-200 text-gray-800" },
-    em_andamento: { label: "Em Andamento", classes: "bg-yellow-200 text-yellow-800" },
+    em_andamento: {
+      label: "Em Andamento",
+      classes: "bg-yellow-200 text-yellow-800",
+    },
     concluida: { label: "Concluída", classes: "bg-green-200 text-green-800" },
   };
   const { label, classes } = config[status] || {};
   return (
-    <span className={cn("inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium", classes)}>
+    <span
+      className={cn(
+        "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium",
+        classes
+      )}
+    >
       {label}
     </span>
   );
@@ -19,7 +30,9 @@ const StatusBadge = ({ status }: { status: string }) => {
 const TarefaItem = ({ tarefa }: { tarefa: any }) => {
   const { updateStatus, deleteTarefa } = useTarefas();
 
-  const handleStatusChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleStatusChange = async (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     await updateStatus(tarefa.id, event.target.value);
   };
 

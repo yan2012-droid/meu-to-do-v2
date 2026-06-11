@@ -1,7 +1,6 @@
 "use client";
 
 import { useAuth } from "@/contexts/AuthContext/AuthContext";
-import { useTarefas } from "@/hooks/useTarefas";
 import { Layout } from "@/components/Layout";
 import { MadeWithDyad } from "@/components/made-with-dyad";
 import { Button } from "@/components/ui/button";
@@ -9,7 +8,7 @@ import { TarefaForm } from "@/components/TarefaForm";
 import { TarefaList } from "@/components/TarefaList";
 
 const Home = () => {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
 
   const handleLogout = async () => {
     await logout();
