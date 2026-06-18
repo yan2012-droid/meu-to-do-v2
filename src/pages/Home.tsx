@@ -6,9 +6,18 @@ import { MadeWithDyad } from "@/components/made-with-dyad";
 import { Button } from "@/components/ui/button";
 import { TarefaForm } from "@/components/TarefaForm";
 import { TarefaList } from "@/components/TarefaList";
+import { useTarefas } from "@/hooks/useTarefas";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/ui/tabs";
+import { TarefaItem } from "@/components/TarefaItem";
 
 const Home = () => {
   const { logout } = useAuth();
+  const { tarefasExcluidas } = useTarefas();
 
   const handleLogout = async () => {
     await logout();
@@ -17,18 +26,53 @@ const Home = () => {
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-            Meu To Do
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Bem-vindo de volta!
-          </p>
-        </div>
-        <div className="flex flex-col md:flex-row">
-          <TarefaForm />
-          <TarefaList />
-        </div>
+        <Tabs defaultValue="tarefas" className="w-full">
+          <TabsList className="mb-4">
+            <TabsTrigger value="tarefas">Tarefas</TabsTrigger>
+            <TabsTrigger value="lixeira">Lixeira</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="tarefas">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+                Meu To Do
+              </h1>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Bem-vindo de volta!
+              </p>
+            </div>
+            <div className="flex flex-col md:flex-row">
+              <TarefaForm />
+              <TarefaList />
+            </div>
+          </TabsContent>
+
+          <TabsContent value="lixeira">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                Lixeira
+              </h2>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {tarefasExcluidas.map((tarefa) => (
+                <div key={tarefa.id} className="bg-white shadow rounded-lg p-6 hover:shadow-lg transition-shadow">
+                  <h3 className="font-medium text-lg">{tarefa.titulo}</h3>
+                  <p className="text-gray-500 text-sm mt-1">
+                    Excluída em {new Date(tarefa.excluida_em!).toLocaleString("pt-BR")}
+                  </p>
+                  <Button
+                    variant="outline"
+                    className="mt-4 w-full"
+                    onClick={() => useTarefas().restaurarTarefa(tarefa.id)}
+                  >
+                    Restaurar
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+        </Tabs>
+
         <div className="mt-8">
           <Button
             onClick={handleLogout}
