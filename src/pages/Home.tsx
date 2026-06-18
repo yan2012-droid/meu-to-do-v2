@@ -6,7 +6,6 @@ import { MadeWithDyad } from "@/components/made-with-dyad";
 import { Button } from "@/components/ui/button";
 import { TarefaForm } from "@/components/TarefaForm";
 import { TarefaList } from "@/components/TarefaList";
-import { useTarefas } from "@/hooks/useTarefas";
 import {
   Tabs,
   TabsList,
@@ -28,13 +27,23 @@ const Home = () => {
       <div className="container mx-auto px-4 py-8">
         <Tabs defaultValue="tarefas" className="w-full">
           <TabsList className="mb-4">
-            <TabsTrigger value="tarefas">Tarefas</TabsTrigger>
-            <TabsTrigger value="lixeira">Lixeira</TabsTrigger>
+            <TabsTrigger
+              value="tarefas"
+              className="border-b-2 border-transparent data-[state=active]:border-green-600"
+            >
+              Tarefas
+            </TabsTrigger>
+            <TabsTrigger
+              value="lixeira"
+              className="border-b-2 border-transparent data-[state=active]:border-green-600"
+            >
+              Lixeira
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="tarefas">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+              <h1 className="text-4xl md:text-6xl font-bold text-green-700 dark:text-green-200 mb-4">
                 Meu To Do
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -49,7 +58,7 @@ const Home = () => {
 
           <TabsContent value="lixeira">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              <h2 className="text-3xl font-bold text-green-700 dark:text-green-200 mb-4">
                 Lixeira
               </h2>
             </div>
@@ -75,7 +84,7 @@ const Home = () => {
           <Button
             onClick={handleLogout}
             variant="outline"
-            className="h-8 text-sm"
+            className="h-8 text-sm border-green-600 hover:border-green-700 hover:text-green-700"
           >
             Sair
           </Button>
