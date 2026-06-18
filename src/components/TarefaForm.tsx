@@ -32,7 +32,7 @@ export const TarefaForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex-shrink-0 w-full max-w-md">
       <div className="space-y-2">
         <Label htmlFor="titulo">Título</Label>
         <Input
@@ -45,7 +45,7 @@ export const TarefaForm = () => {
           <p className="text-red-500 text-sm">{errors.titulo.message}</p>
         )}
       </div>
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
+      <Button type="submit" className="w-full btn-primary" disabled={isSubmitting}>
         {isSubmitting ? "Adicionando..." : "Adicionar"}
       </Button>
     </form>

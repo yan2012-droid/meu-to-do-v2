@@ -13,7 +13,10 @@ import { ExcluirTarefaDialog } from "./ExcluirTarefaDialog";
 
 const StatusBadge = ({ status }: { status: string }) => {
   const config = {
-    pendente: { label: "Pendente", classes: "bg-gray-200 text-gray-800" },
+    pendente: {
+      label: "Pendente",
+      classes: "bg-gray-200 text-gray-800",
+    },
     em_andamento: {
       label: "Em Andamento",
       classes: "bg-yellow-200 text-yellow-800",
@@ -40,14 +43,6 @@ export const TarefaItem = ({ tarefa }: { tarefa: any }) => {
     await updateStatus(tarefa.id, novoStatus);
   };
 
-  const handleDelete = async () => {
-    await deleteTarefa(tarefa.id);
-  };
-
-  const handleEdit = async (novoTitulo: string) => {
-    await updateTitulo(tarefa.id, novoTitulo);
-  };
-
   return (
     <div className="bg-white shadow rounded-lg p-6 hover:shadow-lg transition-shadow">
       <div className="flex items-center">
@@ -69,11 +64,8 @@ export const TarefaItem = ({ tarefa }: { tarefa: any }) => {
               <SelectItem value="concluida">Concluída</SelectItem>
             </SelectContent>
           </Select>
-          <EditarTarefaDialog
-            tituloAtual={tarefa.titulo}
-            onSalvar={handleEdit}
-          />
-          <ExcluirTarefaDialog titulo={tarefa.titulo} onConfirm={handleDelete} />
+          <EditarTarefaDialog tituloAtual={tarefa.titulo} id={tarefa.id} onSalvar={updateTitulo} />
+          <ExcluirTarefaDialog titulo={tarefa.titulo} onConfirm={() => deleteTarefa(tarefa.id)} />
         </div>
       </div>
     </div>
