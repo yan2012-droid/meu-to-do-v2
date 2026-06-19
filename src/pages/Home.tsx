@@ -51,7 +51,7 @@ const Home = () => {
                 Bem-vindo de volta!
               </p>
             </div>
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col items-center w-full gap-6 max-w-2xl mx-auto">
               <TarefaForm />
               <TarefaList />
             </div>
