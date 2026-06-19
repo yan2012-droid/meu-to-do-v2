@@ -9,7 +9,7 @@ export const TarefaList = () => {
   if (isError) return <div className="text-center text-red-500">Erro: {error.message}</div>;
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    <div className="flex flex-col gap-4 w-full">
       {tarefas.length === 0 ? (
         <div className="text-center text-gray-600 mb-8">
           Nenhuma tarefa ainda. Crie a primeira!
