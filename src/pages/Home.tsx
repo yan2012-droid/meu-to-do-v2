@@ -1,6 +1,7 @@
 "use client";
 
 import { useAuth } from "@/contexts/AuthContext/AuthContext";
+import { useTarefas } from "@/hooks/useTarefas";
 import { Layout } from "@/components/Layout";
 import { MadeWithDyad } from "@/components/made-with-dyad";
 import { Button } from "@/components/ui/button";
