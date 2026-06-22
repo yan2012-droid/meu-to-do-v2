@@ -64,7 +64,11 @@ export const TarefaItem = ({ tarefa }: { tarefa: any }) => {
               <SelectItem value="concluida">Concluída</SelectItem>
             </SelectContent>
           </Select>
-          <EditarTarefaDialog tituloAtual={tarefa.titulo} id={tarefa.id} onSalvar={updateTitulo} />
+          <EditarTarefaDialog
+            tituloAtual={tarefa.titulo}
+            id={tarefa.id}
+            onSalvar={(novo: string) => updateTitulo(tarefa.id, novo)}
+          />
           <ExcluirTarefaDialog titulo={tarefa.titulo} onConfirm={() => deleteTarefa(tarefa.id)} />
         </div>
       </div>

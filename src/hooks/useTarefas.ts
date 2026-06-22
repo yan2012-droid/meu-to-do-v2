@@ -11,12 +11,6 @@ export interface Tarefa {
   excluida_em: string | null;
 }
 
-/**
- * Centraliza a lógica de tarefas: listagem, criação,
- * atualização de status, edição de título, soft‑delete, restauração
- * e consulta de itens excluídos.
- * O RLS do Supabase garante que cada usuário só acessa as próprias tarefas.
- */
 export const useTarefas = () => {
   const queryClient = useQueryClient();
 
@@ -61,7 +55,7 @@ export const useTarefas = () => {
   /* ===================== CRIAÇÃO ===================== */
   const createMutation = useMutation({
     mutationFn: async (titulo: string) => {
-      const { error } = await supabase.from("tarefas").insert({ titulo });
+      const { error } = await supabase.from("tarefas").insert({ titulo } as any);
       if (error) throw new Error(error.message);
     },
     onSuccess: () => {
@@ -78,7 +72,7 @@ export const useTarefas = () => {
     mutationFn: async ({ id, status }: { id: string; status: string }) => {
       const { error } = await supabase
         .from("tarefas")
-        .update({ status })
+        .update({ status } as any)
         .eq("id", id);
       if (error) throw new Error(error.message);
     },
@@ -96,7 +90,7 @@ export const useTarefas = () => {
     mutationFn: async ({ id, titulo }: { id: string; titulo: string }) => {
       const { error } = await supabase
         .from("tarefas")
-        .update({ titulo })
+        .update({ titulo } as any)
         .eq("id", id);
       if (error) throw new Error(error.message);
     },
@@ -114,7 +108,7 @@ export const useTarefas = () => {
     mutationFn: async (id: string) => {
       const { error } = await supabase
         .from("tarefas")
-        .update({ excluida_em: new Date().toISOString() })
+        .update({ excluida_em: new Date().toISOString() } as any)
         .eq("id", id);
       if (error) throw new Error(error.message);
     },
@@ -133,7 +127,7 @@ export const useTarefas = () => {
     mutationFn: async (id: string) => {
       const { error } = await supabase
         .from("tarefas")
-        .update({ excluida_em: null })
+        .update({ excluida_em: null } as any)
         .eq("id", id);
       if (error) throw new Error(error.message);
     },
