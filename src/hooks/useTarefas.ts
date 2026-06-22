@@ -72,7 +72,7 @@ export const useTarefas = () => {
   /* ===================== STATUS ===================== */
   const updateStatusMutation = useMutation({
     mutationFn: async ({ id, status }: { id: string; status: string }) => {
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from("tarefas")
         .update({ status } as any)
         .eq("id", id);
@@ -90,7 +90,7 @@ export const useTarefas = () => {
   /* ===================== EDITAR TITULO ===================== */
   const updateTituloMutation = useMutation({
     mutationFn: async ({ id, titulo }: { id: string; titulo: string }) => {
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from("tarefas")
         .update({ titulo } as any)
         .eq("id", id);
@@ -108,7 +108,7 @@ export const useTarefas = () => {
   /* ===================== SOFT DELETE ===================== */
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from("tarefas")
         .update({ excluida_em: new Date().toISOString() } as any)
         .eq("id", id);
@@ -127,7 +127,7 @@ export const useTarefas = () => {
   /* ===================== RESTAURAR ===================== */
   const restoreMutation = useMutation({
     mutationFn: async (id: string) => {
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from("tarefas")
         .update({ excluida_em: null } as any)
         .eq("id", id);
