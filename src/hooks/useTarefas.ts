@@ -24,7 +24,7 @@ export const useTarefas = () => {
     queryKey: ["tarefas"],
     queryFn: async (): Promise<Tarefa[]> => {
       const { data, error } = await supabase
-        .from("tarefas")
+        .from<Tarefa>("tarefas")
         .select("*")
         .is("excluida_em", null)
         .order("created_at", { ascending: false });
@@ -43,7 +43,7 @@ export const useTarefas = () => {
     queryKey: ["tarefas-excluidas"],
     queryFn: async (): Promise<Tarefa[]> => {
       const { data, error } = await supabase
-        .from("tarefas")
+        .from<Tarefa>("tarefas")
         .select("*")
         .not("excluida_em", "is", null)
         .order("created_at", { ascending: false });
@@ -55,7 +55,9 @@ export const useTarefas = () => {
   /* ===================== CRIAÇÃO ===================== */
   const createMutation = useMutation({
     mutationFn: async (titulo: string) => {
-      const { error } = await supabase.from("tarefas").insert({ titulo } as any);
+      const { error } = await supabase
+        .from<Tarefa>("tarefas")
+        .insert({ titulo } as any);
       if (error) throw new Error(error.message);
     },
     onSuccess: () => {
@@ -71,7 +73,7 @@ export const useTarefas = () => {
   const updateStatusMutation = useMutation({
     mutationFn: async ({ id, status }: { id: string; status: string }) => {
       const { error } = await supabase
-        .from("tarefas")
+        .from<Tarefa>("tarefas")
         .update({ status } as any)
         .eq("id", id);
       if (error) throw new Error(error.message);
@@ -89,7 +91,7 @@ export const useTarefas = () => {
   const updateTituloMutation = useMutation({
     mutationFn: async ({ id, titulo }: { id: string; titulo: string }) => {
       const { error } = await supabase
-        .from("tarefas")
+        .from<Tarefa>("tarefas")
         .update({ titulo } as any)
         .eq("id", id);
       if (error) throw new Error(error.message);
@@ -107,7 +109,7 @@ export const useTarefas = () => {
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
       const { error } = await supabase
-        .from("tarefas")
+        .from<Tarefa>("tarefas")
         .update({ excluida_em: new Date().toISOString() } as any)
         .eq("id", id);
       if (error) throw new Error(error.message);
@@ -126,7 +128,7 @@ export const useTarefas = () => {
   const restoreMutation = useMutation({
     mutationFn: async (id: string) => {
       const { error } = await supabase
-        .from("tarefas")
+        .from<Tarefa>("tarefas")
         .update({ excluida_em: null } as any)
         .eq("id", id);
       if (error) throw new Error(error.message);
