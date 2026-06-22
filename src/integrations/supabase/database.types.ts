@@ -30,6 +30,32 @@ export interface Database {
           website?: string | null
         }
       }
+      tarefas: {
+        Row: {
+          id: string
+          user_id: string
+          titulo: string
+          status: string
+          created_at: string
+          excluida_em: string | null
+        }
+        Insert: {
+          id: string
+          user_id: string
+          titulo: string
+          status: string
+          created_at?: string
+          excluida_em?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          titulo?: string
+          status?: string
+          created_at?: string
+          excluida_em?: string | null
+        }
+      }
     }
   }
 }
