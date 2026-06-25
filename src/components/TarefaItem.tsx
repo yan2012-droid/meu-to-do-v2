@@ -44,7 +44,7 @@ export const TarefaItem = ({ tarefa }: { tarefa: any }) => {
   };
 
   return (
-    <div className="bg-white shadow rounded-lg p-6 hover:shadow-lg transition-shadow border-l-4 border-green-200">
+    <div className="bg-white shadow-xl rounded-xl p-6 border-l-4 border-blue-900 hover:shadow-2xl transition-shadow">
       <div className="flex items-center">
         <div className="flex-1">
           <h3 className="font-medium text-lg">{tarefa.titulo}</h3>
