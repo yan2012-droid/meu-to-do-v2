@@ -44,7 +44,7 @@ const Home = () => {
 
           <TabsContent value="tarefas">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-6xl font-bold text-green-700 dark:text-green-200 mb-4">
+              <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-4">
                 Meu To Do
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
