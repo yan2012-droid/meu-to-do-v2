@@ -6,43 +6,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 :root {
-  /* Paleta ao vivo: verde corporativo, neutros */
-  --primary: 160 35% 20%;  /* verde petróleo escuro */
-  --primary-foreground: 0 0% 98%; /* branco */
-
-  --radius: 0.5rem;
-
-  /* Mantido de acordo com o tema original */
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  --background: 214 60% 97%;
+  --foreground: 222 47% 11%;
 
   --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --card-foreground: 222 47% 11%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --popover-foreground: 222 47% 11%;
 
-  --primary: 160 35% 20%; /* redefinido verde corporativo */
-  --primary-foreground: 0 0% 98%;
+  --primary: 221 83% 25%;
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 214 32% 91%;
+  --secondary-foreground: 222 47% 11%;
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 214 32% 91%;
+  --muted-foreground: 215 16% 47%;
 
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
+  --accent: 214 32% 91%;
+  --accent-foreground: 222 47% 11%;
 
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
+  --border: 214 32% 85%;
+  --input: 214 32% 85%;
+  --ring: 221 83% 25%;
+
+  --radius: 0.75rem;
 }
 
-/* Estilos básicos (cor corporativa e tipografia) */
+/* Estilos básicos */
 body {
   @apply bg-background text-foreground;
   font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -50,18 +45,19 @@ body {
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-/* ---------- Cores personalizadas ---------- */
+/* ---------- Dark mode ---------- */
 [data-theme="dark"] {
-  --background: 222.2 84% 4.9%;
+  --background: 222 47% 8%;
   --foreground: 210 40% 98%;
-  --card: 222.2 84% 4.9%;
+  --card: 222 47% 11%;
   --card-foreground: 210 40% 98%;
-  --popover: 222.2 84% 4.9%;
+  --popover: 222 47% 11%;
   --popover-foreground: 210 40% 98%;
-  --primary: 140 45% 35%; /* verde mais claro em dark */
+  --primary: 213 94% 68%;
+  --primary-foreground: 222 47% 11%;
 }
 
-/* Estilos de botão padrão (aplica o verde corporativo) */
+/* Botão primário navy */
 .btn-primary {
-  @apply bg-green-600 hover:bg-green-700 text-white transition-colors;
+  @apply bg-blue-900 hover:bg-blue-800 text-white transition-colors;
 }
